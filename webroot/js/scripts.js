@@ -23,7 +23,7 @@ $(document).ready(function() {
         ]
     });
 
-    $('#upload_csv').on("submit", function(e){  
+    $('#upload_csv').on("submit", function(e){ 
         e.preventDefault(); //form will not submitted  
         $.ajax({  
              url:'uploadcsv',  
@@ -49,5 +49,21 @@ $(document).ready(function() {
              }  
         })  
     });
+
+    var json = { "groupid": $("#groupid").val() };
+    var table = $('#persons-table').DataTable( {
+        ajax: {
+            url: 'view',
+            dataSrc: '',
+            type: 'POST',
+            data: json
+        },
+        order: [[ 1, "desc" ]],
+        columns: [ 
+            { data: "first_name" },
+            { data: "last_name" },
+            { data: "email_address" }
+        ]
+    } );
 
 }); 
