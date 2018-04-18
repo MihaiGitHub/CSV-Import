@@ -7,3 +7,4 @@
         </tr>
     </thead>
 </table>
+<input type="hidden" id="groupid" value="<?php echo $groupid; ?>">
