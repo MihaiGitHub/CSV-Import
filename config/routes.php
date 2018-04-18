@@ -62,55 +62,6 @@ Router::scope('/', function ($routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
-/*
-Router::scope('/groups', function ($routes) {
-    $routes->connect('/', ['controller' => 'Groups', 'action' => 'index']);
-    $routes->connect('/index', ['controller' => 'Groups', 'action' => 'groups']);
-
-});
-*/
-
-/*
-Router::scope('/groups/index', function ($routes) {
-    $routes->connect('/', ['controller' => 'Groups', 'action' => 'index']);
-});
-*/
-/*
-Router::scope('/groups/list', function ($routes) {
-    $routes->connect('/', ['controller' => 'Groups', 'action' => 'list']);
-});
-
-Router::scope('/groups/uploadcsv', function ($routes) {
-    $routes->connect('/', ['controller' => 'Groups', 'action' => 'uploadcsv']);
-});
-
-Router::scope('/persons', function ($routes) {
-    $routes->connect('/', ['controller' => 'Persons', 'action' => 'index']);
-});
-
-*/
-
-
-
-
-
-
-
-/*
-Router::scope('/groups',
-    function (RouteBuilder $routes) {
-        $routes->connect('/*', ['controller' => 'Groups', 'action' => 'index', 'home']);
-     //   $routes->connect('/list', ['controller' => 'Groups', 'action' => 'list']);
-    }
-);
-
-Router::scope('/', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'Groups', 'action' => 'index', 'home']);
- //   $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-    $routes->fallbacks(DashedRoute::class);
-});
-*/
-
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.
