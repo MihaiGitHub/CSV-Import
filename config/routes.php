@@ -46,37 +46,70 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::scope('/', function (RouteBuilder $routes) {
-    /**
-     * Here, we are connecting '/' (base path) to a controller called 'Pages',
-     * its action called 'display', and we pass a param to select the view file
-     * to use (in this case, src/Template/Pages/home.ctp)...
-     */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
-    /**
-     * ...and connect the rest of 'Pages' controller's URLs.
-     */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-
-    /**
-     * Connect catchall routes for all controllers.
-     *
-     * Using the argument `DashedRoute`, the `fallbacks` method is a shortcut for
-     *    `$routes->connect('/:controller', ['action' => 'index'], ['routeClass' => 'DashedRoute']);`
-     *    `$routes->connect('/:controller/:action/*', [], ['routeClass' => 'DashedRoute']);`
-     *
-     * Any route class can be used with this method, such as:
-     * - DashedRoute
-     * - InflectedRoute
-     * - Route
-     * - Or your own route class
-     *
-     * You can remove these routes once you've connected the
-     * routes you want in your application.
-     */
+Router::scope('/', function ($routes) {
+    // Connect the generic fallback routes.
     $routes->fallbacks(DashedRoute::class);
 });
+
+
+Router::scope('/', function ($routes) {
+    $routes->connect('/', ['controller' => 'Groups', 'action' => 'index']);
+    $routes->connect('/groups', ['controller' => 'Groups', 'action' => 'index']);
+    $routes->connect('/groups/list', ['controller' => 'Groups', 'action' => 'list']);
+    $routes->connect('/groups/index', ['controller' => 'Groups', 'action' => 'index']);
+    $routes->connect('/groups/uploadcsv', ['controller' => 'Groups', 'action' => 'uploadcsv']);
+    $routes->fallbacks(DashedRoute::class);
+});
+
+/*
+Router::scope('/groups', function ($routes) {
+    $routes->connect('/', ['controller' => 'Groups', 'action' => 'index']);
+    $routes->connect('/index', ['controller' => 'Groups', 'action' => 'groups']);
+
+});
+*/
+
+/*
+Router::scope('/groups/index', function ($routes) {
+    $routes->connect('/', ['controller' => 'Groups', 'action' => 'index']);
+});
+*/
+/*
+Router::scope('/groups/list', function ($routes) {
+    $routes->connect('/', ['controller' => 'Groups', 'action' => 'list']);
+});
+
+Router::scope('/groups/uploadcsv', function ($routes) {
+    $routes->connect('/', ['controller' => 'Groups', 'action' => 'uploadcsv']);
+});
+
+Router::scope('/persons', function ($routes) {
+    $routes->connect('/', ['controller' => 'Persons', 'action' => 'index']);
+});
+
+*/
+
+
+
+
+
+
+
+/*
+Router::scope('/groups',
+    function (RouteBuilder $routes) {
+        $routes->connect('/*', ['controller' => 'Groups', 'action' => 'index', 'home']);
+     //   $routes->connect('/list', ['controller' => 'Groups', 'action' => 'list']);
+    }
+);
+
+Router::scope('/', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'Groups', 'action' => 'index', 'home']);
+ //   $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->fallbacks(DashedRoute::class);
+});
+*/
 
 /**
  * Load all plugin routes. See the Plugin documentation on

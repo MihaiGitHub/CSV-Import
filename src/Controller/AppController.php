@@ -51,4 +51,12 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
     }
+
+    public function json($data){
+
+        $json_data = json_encode($data);
+        $response = $this->response->withType('json')->withStringBody($json_data);
+        return $response;
+        
+    }
 }
