@@ -8,7 +8,9 @@ class GroupsController extends AppController
    
     public function index()
     {
-       
+        $this->loadComponent('Paginator');
+        $groups = $this->Paginator->paginate($this->Groups->find());
+        $this->set(compact('groups'));
     }
 
     public function uploadcsv(){
