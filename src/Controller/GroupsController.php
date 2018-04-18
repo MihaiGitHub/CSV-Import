@@ -13,6 +13,14 @@ class GroupsController extends AppController
         $this->set(compact('groups'));
     }
 
+    public function list(){
+
+        if ($this->request->is('ajax')) {
+            $groups = $this->Groups->find();
+            return $this->json($groups);
+        }
+    }
+
     public function uploadcsv(){
         $this->autoRender = false;
         if ($this->request->is('post')) {
